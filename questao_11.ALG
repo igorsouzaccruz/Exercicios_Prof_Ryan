@@ -7,27 +7,80 @@ Algoritmo "exibirTabuada"
 Var
 // Seção de Declarações das variáveis 
 numero:inteiro
-j: inteiro
+coluna: inteiro
+linha:inteiro
+colunas:inteiro
+repet:real
+loop:real
+resto:real
+
 
 Inicio
-// Seção de Comandos, procedimento, funções, operadores, etc... 
+// FUNCIONA PORÉM PRECISA MELHORAR
 escreval("Até qual número deseja a tabuada?")
 leia(numero)
 
-para j de 1 ate numero faca
-     escreval("TABUADA DE: ", j)
-     escreval(j," * 0 = ", j*0)
-     escreval(j," * 1 = ", j*1)
-     escreval(j," * 2 = ", j*2)
-     escreval(j," * 3 = ", j*3)
-     escreval(j," * 4 = ", j*4)
-     escreval(j," * 5 = ", j*5)
-     escreval(j," * 6 = ", j*6)
-     escreval(j," * 7 = ", j*7)
-     escreval(j," * 8 = ", j*8)
-     escreval(j," * 9 = ", j*9)
-     escreval("--------------------------------------")
+repet <- (numero/3.0)
+colunas <- 1
+loop <- repet
 
-fimpara
+
+SE (repet < 1) ENTAO
+  repita
+     para linha de 1 ate 10 faca
+        para coluna de 1 ate numero faca
+             escreva(coluna," * ", linha, " =  ", coluna * linha, " | ")
+        fimpara
+        escreval(" ")
+     fimpara
+
+  ate(coluna = numero)
+FIMSE
+
+
+SE (numero%3=0) ENTAO
+  repita
+     para linha de 1 ate 10 faca
+        para coluna de colunas ate colunas+2 faca
+             escreva(coluna," * ", linha, " =  ", coluna * linha, " | ")
+        fimpara
+        escreval(" ")
+     fimpara
+     colunas <- colunas + 3
+     loop <- loop - 1
+  ate(loop = 0)
+FIMSE
+
+SE ((repet > 1) E (NAO(numero%3=0))) ENTAO
+
+   resto <- numero - (int(loop) * 3)
+
+     repita
+        para linha de 1 ate 10 faca
+           para coluna de colunas ate colunas + 2 faca
+                escreva(coluna," * ", linha, " =  ", coluna * linha, " | ")
+           fimpara
+           escreval(" ")
+        fimpara
+
+     colunas <- colunas + 3
+     loop <- int(loop) - 1
+
+     ate(loop = 0)
+  
+escreval(" ")
+
+     repita
+           para linha de 1 ate 10 faca
+                para coluna de (numero - int(resto) + 1) ate numero faca
+                     escreva(coluna," * ", linha, " =  ", coluna * linha, " | ")
+                fimpara
+                escreval(" ")
+           fimpara
+
+     ate(coluna = numero)
+  
+FIMSE
+
 
 Fimalgoritmo
